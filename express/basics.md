@@ -50,4 +50,6 @@ const __dirname = dirname(__filename);
 - `json([body])`: Sendet Antwort, wobei übergebenes Objekt in JSON umgewandelt wird.
 - `end([data][, encoding])`: Sendet HTTP-Antwort
 
+## Nodemon
 
+Nodemon ist nützlich für die Entwicklung, da es bei Änderungen automatisch den Node-Server neustartet.
