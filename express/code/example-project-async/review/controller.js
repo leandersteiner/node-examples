@@ -1,36 +1,34 @@
-const data = [
-    {
-        id: 1, movieId: 1, user: 'John Doe', rating: 9, title: 'Greate Movie', content: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.'
-    },
-    {
-        id: 2, movieId: 2, user: 'John Doe', rating: 9, title: 'Greate sequel to a great movie', content: 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.'
-    }
-];
+import { ReviewList } from "./model.js";
 
-export const list = (req, res) => {
-    res.json(data);
-};
+export class ReviewController {
+  constructor() {
+    this.model = new ReviewList();
+  }
 
-export const create = (req, res) => {
+  list = async (req, res) => {
+    res.json(await this.model.getAll());
+  };
+
+  create = async (req, res) => {
     const entity = req.body;
-    data.push(entity);
+    await this.model.add(entity);
     res.json(entity);
-};
+  };
 
-export const read = (req, res) => {
+  read = async (req, res) => {
     const id = Number(req.params.id);
-    res.json(data.find(entity => entity.id === id));
-};
+    res.json(await this.model.get(id));
+  };
 
-export const update = (req, res) => {
+  update = async (req, res) => {
     const id = Number(req.params.id);
     const entity = req.body;
-    data = data.filter(entity => entity.id === id);
-    data.push(entity);
+    await this.model.update(id, entity);
     res.json(entity);
-};
+  };
 
-export const remove = (req, res) => {
+  remove = async (req, res) => {
     const id = Number(req.params.id);
-    data = data.filter(entity => entity.id === id);
-};
+    await this.model.remove(id);
+  };
+}

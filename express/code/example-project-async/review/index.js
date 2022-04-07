@@ -1,12 +1,13 @@
 import { Router } from "express";
-import { create, list, read, remove, update } from "./controller.js";
+import { ReviewController } from "./controller.js";
 
 const router = Router();
+const controller = new ReviewController();
 
-router.get('/', list);
-router.get('/:id', read);
-router.post('/', create);
-router.patch('/:id', update);
-router.delete('/:id', remove);
+router.get("/", controller.list);
+router.get("/:id", controller.read);
+router.post("/", controller.create);
+router.patch("/:id", controller.update);
+router.delete("/:id", controller.remove);
 
 export { router };

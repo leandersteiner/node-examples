@@ -1,28 +1,47 @@
-import { getAll, get, remove, add, update } from "./model.js";
+import { MovieList } from "./model.js";
+import axios from "axios";
 
-export const list = async (req, res) => {
-    res.json(await getAll());
-};
+export class MovieController {
+  constructor() {
+    this.model = new MovieList();
+  }
 
-export const create = async (req, res) => {
+  list = async (req, res) => {
+    res.json(await this.model.getAll());
+  };
+
+  create = async (req, res) => {
     const entity = req.body;
-    await add(entity);
+    await this.model.add(entity);
     res.json(entity);
-};
+  };
 
-export const read = async (req, res) => {
+  read = async (req, res) => {
     const id = Number(req.params.id);
-    res.json(await get(id));
-};
+    res.json(await this.model.get(id));
+  };
 
-export const patch = async (req, res) => {
+  update = async (req, res) => {
     const id = Number(req.params.id);
     const entity = req.body;
-    await update(id, entity)
+    await this.model.update(id, entity);
     res.json(entity);
-};
+  };
 
-export const del = async (req, res) => {
+  remove = async (req, res) => {
     const id = Number(req.params.id);
-    await remove(id);
-};
+    await this.model.remove(id);
+  };
+
+  readWithReviews = async (req, res) => {
+    const id = Number(req.params.id);
+    const movie = await this.model.get(id);
+    const reviewsReq = await axios.get(`http://localhost:8082/reviews/${id}`);
+    const reviews = reviewsReq.data;
+    const response = {
+      movie,
+      reviews,
+    };
+    res.json(response);
+  };
+}
