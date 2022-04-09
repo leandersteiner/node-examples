@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "start:dev": "nodemon",
-    "start": "npm run build && node dist/inex.js",
+    "start": "npm run build && node dist/index.js",
     "clean": "rimraf ./dist",
     "build": "npm run clean && tsc",
     "lint": "eslint . --ext .ts"
