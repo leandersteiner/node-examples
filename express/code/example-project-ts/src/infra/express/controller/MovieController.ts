@@ -9,23 +9,39 @@ export class MovieController implements ResourceController {
     private reviewService: ReviewService
   ) {}
 
-  create(req: Request, res: Response): void {
-    throw new Error('Method not implemented.');
-  }
+  create = (req: Request, res: Response): void => {
+    this.movieService.create(req.body);
+    res.json({ status: 'ok' });
+  };
 
-  read(req: Request, res: Response): void {
-    throw new Error('Method not implemented.');
-  }
+  read = async (req: Request, res: Response): Promise<void> => {
+    const movie = await this.movieService.get(Number(req.params.id));
+    if (movie === null) {
+      res.json({ status: 'error: not found' });
+      return;
+    }
+    const reviews = await this.reviewService.getForMovie(movie);
+    res.json({
+      movie,
+      reviews
+    });
+  };
 
   update(req: Request, res: Response): void {
-    throw new Error('Method not implemented.');
+    const body = req.body;
+    res.json(body);
   }
 
-  delete(req: Request, res: Response): void {
-    throw new Error('Method not implemented.');
-  }
+  delete = async (req: Request, res: Response): Promise<void> => {
+    const movie = await this.movieService.get(Number(req.params.id));
+    if (movie) {
+      this.movieService.delete(movie);
+      res.json({ status: 'ok' });
+    }
+    res.json({ status: 'error: not found' });
+  };
 
-  list(req: Request, res: Response): void {
-    throw new Error('Method not implemented.');
-  }
+  list = async (req: Request, res: Response): Promise<void> => {
+    res.json(await this.movieService.getAll());
+  };
 }

@@ -1,3 +1,4 @@
+import { Movie } from '../../domain/movie/Movie.js';
 import { Review } from '../../domain/review/Review.js';
 import { ReviewRepository } from '../../domain/review/ReviewRepository.js';
 
@@ -25,6 +26,10 @@ export class InMemoryReviewRepository implements ReviewRepository {
 
   findById(id: number): Promise<Review | null> {
     return Promise.resolve(this.data.find(entity => entity.id === id) || null);
+  }
+
+  findForMovie(movie: Movie): Promise<Review[]> {
+    return Promise.resolve(this.data.filter(entity => entity.id === movie.id));
   }
 
   delete(review: Review): Promise<Review> {

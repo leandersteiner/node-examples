@@ -15,7 +15,8 @@ export class ReviewController implements ResourceController {
   };
 
   update = (req: Request, res: Response): void => {
-    throw new Error('Method not implemented.');
+    const body = req.body;
+    res.json = body;
   };
 
   delete = async (req: Request, res: Response): Promise<void> => {

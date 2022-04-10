@@ -1,3 +1,4 @@
+import { Movie } from '../../domain/movie/Movie.js';
 import { Review } from '../../domain/review/Review.js';
 import { ReviewRepository } from '../../domain/review/ReviewRepository.js';
 
@@ -18,5 +19,9 @@ export class ReviewService {
 
   public delete(review: Review): void {
     this.repository.delete(review);
+  }
+
+  public getForMovie(movie: Movie): Promise<Review[]> {
+    return this.repository.findForMovie(movie);
   }
 }
