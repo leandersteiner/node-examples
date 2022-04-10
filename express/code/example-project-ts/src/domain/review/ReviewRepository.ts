@@ -1,6 +1,4 @@
-import { Repository } from '../../infra/db/Repository';
-import { Review } from './Review';
+import { Repository } from '../../infra/db/Repository.js';
+import { Review } from './Review.js';
 
-export interface ReviewRepository extends Repository<Review> {
-  findByName(name: string): Promise<Review>;
-}
+export interface ReviewRepository extends Repository<Review> {}

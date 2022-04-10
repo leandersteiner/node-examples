@@ -1,4 +1,4 @@
-import { Entity } from '../../infra/db/Entity';
+import { Entity } from '../../infra/db/Entity.js';
 
 export interface Review extends Entity<number> {
   movieId: number;

@@ -12,8 +12,8 @@ export class Server {
     this.initMiddleware();
   }
 
-  public use = (router: express.Router): Server => {
-    this.express.use(router);
+  public useRouter = (prefix: string, router: express.Router): Server => {
+    this.express.use(prefix, router);
     return this;
   };
 
