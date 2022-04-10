@@ -25,5 +25,4 @@ const reviewRouter = new ReviewRouter(reviewController);
 server
   .useRouter('/movies', movieRouter.get())
   .useRouter('/reviews', reviewRouter.get())
-  .start()
-  .then(() => console.log('Server runnng'));
+  .start();
