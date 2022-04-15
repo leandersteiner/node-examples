@@ -10,6 +10,10 @@ export class MovieRouter {
     this.router.post('/', this.controller.create);
     this.router.patch('/:id', this.controller.update);
     this.router.delete('/:id', this.controller.delete);
+    this.router.get('/test/test', (req, res) => {
+      console.log(req.query);
+      res.end('TEST');
+    });
   }
 
   public get(): express.Router {
