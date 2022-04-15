@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { RequestHandler } from 'express';
 import { AddressInfo } from 'net';
 import * as http from 'http';
 
@@ -14,6 +14,11 @@ export class Server {
 
   public useRouter = (prefix: string, router: express.Router): Server => {
     this.express.use(prefix, router);
+    return this;
+  };
+
+  public useMiddleware = (middleware: RequestHandler): Server => {
+    this.express.use(middleware);
     return this;
   };
 

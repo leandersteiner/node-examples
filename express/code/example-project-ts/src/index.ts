@@ -4,6 +4,8 @@ import { InMemoryMovieRepository } from './infra/db/InMemoryMovieRepository.js';
 import { InMemoryReviewRepository } from './infra/db/InMemoryReviewRepository.js';
 import { MovieController } from './infra/express/controller/MovieController.js';
 import { ReviewController } from './infra/express/controller/ReviewController.js';
+import { accessLog } from './infra/express/middleware/access.js';
+import { auth } from './infra/express/middleware/auth.js';
 import { MovieRouter } from './infra/express/router/MovieRouter.js';
 import { ReviewRouter } from './infra/express/router/ReviewRouter.js';
 import { Server } from './infra/express/server/Server.js';
@@ -23,6 +25,8 @@ const movieRouter = new MovieRouter(movieController);
 const reviewRouter = new ReviewRouter(reviewController);
 
 server
+  .useMiddleware(accessLog)
+  .useMiddleware(auth)
   .useRouter('/movies', movieRouter.get())
   .useRouter('/reviews', reviewRouter.get())
   .start();
