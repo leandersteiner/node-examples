@@ -1,18 +1,18 @@
-import { Movie } from '../../domain/movie/Movie.js';
-import { MovieRepository } from '../../domain/movie/MovieRepository.js';
+import { Movie } from '../../../domain/movie/Movie.js';
+import { MovieRepository } from '../../../domain/movie/MovieRepository.js';
 
 export class InMemoryMovieRepository implements MovieRepository {
   private data: Movie[] = [
     {
       id: 1,
       title: 'The Lord of the Rings - The Fellowship of the Ring',
-      year: 2001,
+      year: 2001
     },
     {
       id: 2,
       title: 'The Lord of the Rings: The Two Towers',
-      year: 2002,
-    },
+      year: 2002
+    }
   ];
 
   findByName(name: string): Promise<Movie | null> {

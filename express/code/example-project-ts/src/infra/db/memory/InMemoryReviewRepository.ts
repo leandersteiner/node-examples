@@ -1,6 +1,6 @@
-import { Movie } from '../../domain/movie/Movie.js';
-import { Review } from '../../domain/review/Review.js';
-import { ReviewRepository } from '../../domain/review/ReviewRepository.js';
+import { Movie } from '../../../domain/movie/Movie.js';
+import { Review } from '../../../domain/review/Review.js';
+import { ReviewRepository } from '../../../domain/review/ReviewRepository.js';
 
 export class InMemoryReviewRepository implements ReviewRepository {
   private data: Review[] = [
@@ -11,7 +11,7 @@ export class InMemoryReviewRepository implements ReviewRepository {
       rating: 9,
       title: 'Greate Movie',
       content:
-        'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.',
+        'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.'
     },
     {
       id: 2,
@@ -20,8 +20,8 @@ export class InMemoryReviewRepository implements ReviewRepository {
       rating: 9,
       title: 'Greate sequel to a great movie',
       content:
-        'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.',
-    },
+        'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.'
+    }
   ];
 
   findById(id: number): Promise<Review | null> {
