@@ -39,5 +39,10 @@ export class Server {
 
   private initMiddleware() {
     this.express.use(express.json());
+    this.express.use(
+      express.urlencoded({
+        extended: true
+      })
+    );
   }
 }
