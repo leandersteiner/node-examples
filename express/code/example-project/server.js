@@ -12,5 +12,5 @@ server.use('/movie', movieRouter);
 server.use('/review', reviewRouter);
 
 server.listen(port, () => {
-    console.log(`Server is listening on port ${port}`);
+  console.log(`Server is listening on port ${port}`);
 });

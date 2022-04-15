@@ -1,4 +1,4 @@
-import { ReviewList } from "./model.js";
+import { ReviewList } from './model.js';
 
 export class ReviewController {
   constructor() {

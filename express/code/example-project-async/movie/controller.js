@@ -1,5 +1,5 @@
-import { MovieList } from "./model.js";
-import axios from "axios";
+import { MovieList } from './model.js';
+import axios from 'axios';
 
 export class MovieController {
   constructor() {

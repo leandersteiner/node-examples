@@ -6,11 +6,12 @@
 
 ```js
 const createInc = start => {
-    return step => { // (A)
-        start += step;
-        return start;
-    };
-}
+  return step => {
+    // (A)
+    start += step;
+    return start;
+  };
+};
 
 const inc = createInc(5);
 console.log(inc(1));

@@ -8,7 +8,7 @@ Returning functions will result in function closure.
 ### Receiving functions as arguments (callback functions)
 
 ```js
-const higherOrder = (cb) => {
+const higherOrder = cb => {
   cb('test');
 };
 
@@ -26,8 +26,8 @@ test
 Making use of closure by using partial application to create loggers with different prefixes.
 
 ```js
-const higherOrder = (prefix) => {
-  return (msg) => {
+const higherOrder = prefix => {
+  return msg => {
     console.log(prefix, msg); // access to prefix -> closure
   };
 };
